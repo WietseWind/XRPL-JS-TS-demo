@@ -10,7 +10,7 @@ import { derive, sign } from "xrpl-accountlib";
 //    > https://www.npmjs.com/package/xumm-sdk
 //    > https://dev.to/wietse/how-to-use-the-xumm-sdk-in-node-js-5380
 
-const secret = "sn2a___YOUR_SECRET_HERE___XvgHa";
+const secret = "sh8tjTEJTRaBNdiJkmk4kzsWpbThS";
 
 const client = new XrplClient("wss://hooks-testnet.xrpl-labs.com");
 const account = derive.familySeed(secret);
@@ -30,6 +30,8 @@ const main = async () => {
   // Wait until we know what the current ledger index is
   await client.ready();
 
+  const LastLedgerSequence = client.getState().ledger.last + 2; // Expect finality in max. 5 ledgers
+
   const { id, signedTransaction } = sign(
     {
       TransactionType: "Payment",
@@ -38,7 +40,7 @@ const main = async () => {
       Amount: String(25 * 1_000_000),
       Sequence: account_data.Sequence,
       Fee: String(12),
-      LastLedgerSequence: client.getState().ledger.last + 5, // Expect finality in max. 5 ledgers
+      LastLedgerSequence,
     },
     account
   );
@@ -64,9 +66,19 @@ const main = async () => {
           const xrp = Number(meta.delivered_amount) / 1_000_000;
           console.log(`Delivered amount in XRP instead of drops:\n  ${xrp}`);
         }
+        client.close();
       }
     }
   );
+
+  client.on("ledger", ({ ledger_index }) => {
+    if (ledger_index > LastLedgerSequence) {
+      console.log(
+        "Past last ledger & transaction not seen. Transaction failed"
+      );
+      client.close();
+    }
+  });
 };
 
 main();
