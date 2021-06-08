@@ -4,7 +4,7 @@
 
 This repository [contains TypeScript (compiles to JavaScript) sample code](https://github.com/WietseWind/XRPL-JS-TS-demo/blob/main/index.ts) to compose, sigin & submit an XRP Ledger transaction.
 
-![Demo terminal recording](./assets/demo.gif)
+![Demo terminal recording](https://raw.githubusercontent.com/WietseWind/XRPL-JS-TS-demo/main/assets/demo.gif)
 
 #### Prerequisites
 
