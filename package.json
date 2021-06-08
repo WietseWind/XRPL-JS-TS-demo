@@ -1,7 +1,7 @@
 {
   "name": "xrpl-sample",
   "version": "1.0.0",
-  "description": "Connect to the XRPL and sign + submit a transaction",
+  "description": "Demo: connect to the XRPL and sign + submit a transaction",
   "scripts": {
     "lint": "eslint"
   },
