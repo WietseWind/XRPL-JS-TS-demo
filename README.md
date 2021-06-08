@@ -12,7 +12,7 @@ This repository contains TypeScript (compiles to JavaScript) sample code to comp
 
 #### Preparation
 
-1. Download this repository (ZIP) and extract
+1. [Download this repository (ZIP)](https://github.com/WietseWind/XRPL-JS-TS-demo/archive/refs/heads/main.zip) and extract
 2. Start a terminal window (eg. Bash, ZSH, Powershell) in the folder where you extracted the source code downloaded & extracted in the previous step
 3. Install the dependencies by running `npm install` (The `npm` binary will be available on your computer if you have Node installed, see prerequisites)
 
