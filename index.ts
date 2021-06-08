@@ -30,7 +30,7 @@ const main = async () => {
   // Wait until we know what the current ledger index is
   await client.ready();
 
-  const LastLedgerSequence = client.getState().ledger.last + 2; // Expect finality in max. 5 ledgers
+  const LastLedgerSequence = client.getState().ledger.last + 2; // Expect finality in max. 2 ledgers
 
   const { id, signedTransaction } = sign(
     {
