@@ -1,6 +1,15 @@
 import { XrplClient } from "xrpl-client";
 import { derive, sign } from "xrpl-accountlib";
 
+// Please only do this if you want to build your own platform & sign headless.
+// It's bad practice to add your secret to source code or a config file. In
+// this case it's for demonstration/educational purposes only.
+//
+// If you want to interact with end users, please use the XUMM SDK, and
+// NEVER ask for end user secrets! You do not want that responsibility!
+//    > https://www.npmjs.com/package/xumm-sdk
+//    > https://dev.to/wietse/how-to-use-the-xumm-sdk-in-node-js-5380
+
 const secret = "sn2a___YOUR_SECRET_HERE___XvgHa";
 
 const client = new XrplClient("wss://hooks-testnet.xrpl-labs.com");
